@@ -47025,6 +47025,7 @@ shoes.each do | shoe_hash |
 
 
   brandname = shoe_hash[:name].split(" ")[0]
+
     sneaker = Sneaker.create(
         brand: brandname,
         name: shoe_hash[:name],
@@ -47034,9 +47035,8 @@ shoes.each do | shoe_hash |
         likes: rand(23..555)
     )
 
-    
-end
 
+end
 
 
 
