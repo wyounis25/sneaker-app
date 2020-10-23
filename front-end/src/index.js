@@ -346,6 +346,7 @@ const sneaker_id = sneaker.id
         exitbtn.className = "exitbtn"
         exitbtn.innerText = 'X'
         const bidpost = document.createElement("h3")
+            bidpost.className = "activeb"
             bidpost.innerText = "Active Bids"
             console.log(bidDiv)
         purch.append(exitbtn,bidimg,buy,buyprice,bidheader,bidpost,bidDiv,Bidform)
@@ -385,9 +386,16 @@ const sneaker_id = sneaker.id
 
     function renderbid(newbid) {
         const pur = document.querySelector(".purch")
+        const bidForm = document.createElement('div')
+            bidForm.className = "finalform"
         const price = document.createElement('h3')
-            price.innerText = newbid.amount
-        pur.append(price)
+            price.className = "finalbid"
+            const name = document.querySelector('.navbar-brand')
+        const bidname = name.innerText
+            bidname.className = "bidname"
+            price.innerText = `$${newbid.amount}`
+            bidForm.append(bidname,price)
+        pur.append(bidForm)
             
     }
 
@@ -421,27 +429,39 @@ const sneaker_id = sneaker.id
     const branda = document.createElement("h1")
     branda.className = "brand"
     aName.append(branda)
-    function renderAddias(sneaker) {
+
+
+
+
+
+
+function renderAddias(sneaker) {
     const showdiv = document.createElement('div')
     showdiv.className = "show"
+
     const bidDiv = document.createElement("div")
     bidDiv.className = "bidDiv"
+
     // SNEAKER IMAGE
     const img = document.createElement("img")
     img.className = ("image")
+
     img.src = sneaker.image
+
     const bidpost = document.createElement("h3")
+    bidpost.className = "activeb"
     bidpost.innerText = "Active Bids"
     const sneaker_id = sneaker.id
+
     img.addEventListener("click" , event => {
         console.log(event)
 
         const buy = document.createElement("button")
-            buy.className = "buy"
-            buy.innerText = "BUY"
-        
+        buy.className = "buy"
+        buy.innerText = "BUY"
+    
         const buyprice = document.createElement("h2")
-            buyprice.className = "buyprice"
+        buyprice.className = "buyprice"
         buyprice.innerText = `$${sneaker.retail}`
         const purch = document.createElement("p")
         purch.className = "purch"
@@ -476,10 +496,13 @@ const sneaker_id = sneaker.id
         //purch.append(bidimg,bidDiv)
         purcCont.append(purch)
         sneakn.append(purcCont)
-exitbtn.addEventListener("click", event => {
+
+         exitbtn.addEventListener("click", event => {
                     purch.remove()
-                })
-                Bidform.addEventListener("submit", event=>  {
+                
+                
+         })
+        Bidform.addEventListener("submit", event=>  {
                     event.preventDefault()
                     console.log(event)
                     fetch(urlbid , {
@@ -499,24 +522,31 @@ exitbtn.addEventListener("click", event => {
             }) 
         
                     
-                })
+         })
         
                 
-            })
+     })
         
-            function renderbid(newbid) {
+    function renderbid(newbid) {
                 const pur = document.querySelector(".purch")
+                const bidForm = document.createElement('div')
+                    bidForm.className = "finalform"
                 const price = document.createElement('h3')
-                    price.innerText = newbid.amount
-                pur.append(price)
+                    price.className = "finalbid"
+                    const name = document.querySelector('.navbar-brand')
+                const bidname = name.innerText
+                    bidname.className = "bidname"
+                    price.innerText = `$${newbid.amount}`
+                    bidForm.append(bidname,price)
+                pur.append(bidForm)
                     
-            }
+     }
         
 
 
 
 
-    }
+
 
 
     // SNEAKER NAME
@@ -583,7 +613,8 @@ exitbtn.addEventListener("click", event => {
     // showdiv.append()
 
     sneakcontain.append(img,price,nametitle,likDiv)
-    scrolldiv.append(showdiv)
+    scrolldiv.append(sneakcontain)
+}
 
 
 
@@ -632,6 +663,7 @@ exitbtn.addEventListener("click", event => {
     nametitle.className = "nametitle"
 
     const bidpost = document.createElement("h3")
+    bidpost.className = "activeb"
     bidpost.innerText = "Active Bids"
 
     const hr = document.createElement("hr")
@@ -783,9 +815,16 @@ exitbtn.addEventListener("click", event => {
 
     function renderbid(newbid) {
         const pur = document.querySelector(".purch")
+        const bidForm = document.createElement('div')
+            bidForm.className = "finalform"
         const price = document.createElement('h3')
-            price.innerText = newbid.amount
-        pur.append(price)
+            price.className = "finalbid"
+            const name = document.querySelector('.navbar-brand')
+        const bidname = name.innerText
+            bidname.className = "bidname"
+            price.innerText = `$${newbid.amount}`
+            bidForm.append(bidname,price)
+        pur.append(bidForm)
             
     }
 
@@ -840,6 +879,7 @@ nName.append(brandn)
     nametitle.className = "nametitle"
 
     const bidpost = document.createElement("h3")
+    bidpost.className = "activeb"
     bidpost.innerText = "Active Bids"
 
     const hr = document.createElement("hr")
@@ -987,9 +1027,16 @@ nName.append(brandn)
 
     function renderbid(newbid) {
         const pur = document.querySelector(".purch")
+        const bidForm = document.createElement('div')
+            bidForm.className = "finalform"
         const price = document.createElement('h3')
-            price.innerText = newbid.amount
-        pur.append(price)
+            price.className = "finalbid"
+            const name = document.querySelector('.navbar-brand')
+        const bidname = name.innerText
+            bidname.className = "bidname"
+            price.innerText = `$${newbid.amount}`
+            bidForm.append(bidname,price)
+        pur.append(bidForm)
             
     }
 
@@ -1057,6 +1104,7 @@ vName.append(brandv)
         namediv.className = "namediv"
     
         const bidpost = document.createElement("h3")
+        bidpost.className = "activeb"
         bidpost.innerText = "Active Bids"
         
         // /SNEAKER LIKES
@@ -1203,9 +1251,16 @@ vName.append(brandv)
 
     function renderbid(newbid) {
         const pur = document.querySelector(".purch")
+        const bidForm = document.createElement('div')
+            bidForm.className = "finalform"
         const price = document.createElement('h3')
-            price.innerText = newbid.amount
-        pur.append(price)
+            price.className = "finalbid"
+            const name = document.querySelector('.navbar-brand')
+        const bidname = name.innerText
+            bidname.className = "bidname"
+            price.innerText = `$${newbid.amount}`
+            bidForm.append(bidname,price)
+        pur.append(bidForm)
             
     }
 

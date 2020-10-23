@@ -53,7 +53,24 @@
   top: -20%;
   left: 10%;
 }
+.finalform {
+  position: relative;
+  top: -86%;
+  left: 8%;
+}
+.finalbid {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+.activeb {
+  font-family: 'Montserrat Alternates', sans-serif;
+  position: relative;
+  top: -57%;
+  left: 34%;
+}
 
+.bidname {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
 
 
 
@@ -460,6 +477,9 @@ button {
 
 .bidHeader {
   font-family: 'Montserrat Alternates', sans-serif;
+  position: relative;
+  top: 3%;
+  left: 37%;
 }
 .bids {
     border-radius: 25px;
