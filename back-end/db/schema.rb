@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_202758) do
   create_table "bids", force: :cascade do |t|
     t.integer "user_id"
     t.integer "sneaker_id"
-    t.integer "bid"
+    t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

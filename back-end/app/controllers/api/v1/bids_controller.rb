@@ -2,20 +2,33 @@ class Api::V1::BidsController < ApplicationController
 
 
     def index
-        bids = Bid.all
-        render json: bids
+        amounts = Bid.all
+        render json: amounts
         # render json: owners, include: :kittens  <<< this is the skeleton
     end
 
     def show
-        bid = Bid.find(params[:id])
-        render json: bids
+        amount = Bid.find(params[:id])
+        render json: amount
        
     end
+    def create
+        amount = Bid.new(bid_params)
+        amount.save
+        render json: amount
+
+    end 
 
     def destroy 
-        bid = Bid.find(params[:id])
-        bid.destroy
+        amount = Bid.find(params[:id])
+        amount.destroy
     end 
+
+    private 
+    def bid_params
+        params.require(:bid).permit(:user_id, :sneaker_id, :amount)
+    end
+
+    
 
 end

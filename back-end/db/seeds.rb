@@ -47108,12 +47108,12 @@ u26 = User.create(name: "Dane" , size: 8 , style: "High Top")
 
 
 
-Bid.create(user_id: u3.id, sneaker_id: 1001, bid: 75000)
-Bid.create(user_id: u2.id, sneaker_id: 100, bid: 2000)
-Bid.create(user_id: u1.id, sneaker_id: 1003, bid: 300)
-Bid.create(user_id: u5.id, sneaker_id: 1004, bid: 75000)
-Bid.create(user_id: u6.id, sneaker_id: 1002, bid: 2000)
-Bid.create(user_id: u4.id, sneaker_id: 1004, bid: 300)
+Bid.create!(user_id: u3.id, sneaker_id: Sneaker.first.id, amount: 75000)
+Bid.create!(user_id: u2.id, sneaker_id: Sneaker.second.id, amount: 2000)
+Bid.create!(user_id: u1.id, sneaker_id: Sneaker.third.id, amount: 300)
+Bid.create!(user_id: u5.id, sneaker_id: Sneaker.fourth.id, amount: 75000)
+Bid.create!(user_id: u6.id, sneaker_id: Sneaker.fifth.id, amount: 2000)
+
 
 
 

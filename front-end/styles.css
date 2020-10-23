@@ -1,5 +1,67 @@
 
 
+
+
+/* purch */ 
+
+/* .dark {
+  height: 100vh;
+} */
+
+.purch {
+  background-color: white;
+  width: 800px;
+  border: 15px solid white;
+  padding: 110px;
+  margin: 20px;
+  height: 750px;
+  position: relative;
+  top: -150%;
+  left: -200%;
+}
+.likes {
+  font-family: 'Montserrat Alternates', sans-serif;
+  position: relative; 
+  left: 32%;
+  font-weight: bold;
+}
+.purchc {
+  height: 200px;
+  width: 200px ;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+.bidHeader{
+  position: relative;
+  top: -18%;
+  left: 30%;
+}
+.bidForm{
+  position: relative;
+  top: -20%;
+  left: 30%
+}
+
+.bidimg {
+  width: 70%;
+  height: 50%;
+  bottom: 150px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  top: -20%;
+  left: 10%;
+}
+
+
+
+
+.navbar-brand {
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #800000;
+  font-weight: 3000
+}
 /* ADDIAS */
 .sneak {
   display: flex;
@@ -7,7 +69,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   z-index: 1000;
-  position: relative;
+  /* position: relative; */
 
 }
  .sneak::-webkit-scrollbar{
@@ -30,6 +92,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   z-index: 1000;
+  /* position: relative; */
 
 }
  .sneakj::-webkit-scrollbar{
@@ -53,6 +116,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   z-index: 1000;
+  /* position: relative; */
 
 }
  .sneakn::-webkit-scrollbar{
@@ -107,7 +171,7 @@ input[type= "checkbox"]:checked:after {
 } */
 likDiv {
   font-family: sans-serif;
-  background: rgb(214, 214, 214);
+  background: #ececec;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,7 +238,9 @@ likDiv {
 
 
 .bidDiv{
-  bottom: 0px;
+  position: relative ;
+  top: 400px;
+  right: 1100px;
 }
 /* VANS */
 .sneakv {
@@ -183,6 +249,7 @@ likDiv {
   overflow-x: auto;
   overflow-y: hidden;
   z-index: 1000;
+  /* position: relative; */
 
 }
  .sneakv::-webkit-scrollbar{
@@ -204,6 +271,7 @@ likDiv {
   overflow-x: auto;
   overflow-y: hidden;
   z-index: 1000;
+  /* position: relative; */
 
 }
  .sneakne::-webkit-scrollbar{
@@ -214,14 +282,16 @@ likDiv {
 }
 
 .sneakne::-webkit-scrollbar-thumb {
-  background: #000000 ;
-  border-radius: 10px;
+ background-color: teal;
+  border-radius: 20px;
 }
+
 
 
 
 .brand {
   font-family: 'Montserrat Alternates', sans-serif;
+  color: #800000;
   font-weight: 1500
 }
 .feat_title {
@@ -239,6 +309,7 @@ likDiv {
 }
 .mainmain{
   font-family: 'Montserrat Alternates', sans-serif;
+  top: 25px;
   font-weight: 6000;
   font-size: 100px;
   display: flex;
@@ -250,7 +321,11 @@ likDiv {
   display: flex;
   position: relative;
   justify-content: center;
-  align-items: center;
+  align-items:new center;
+  bottom: -100%;
+  top: -50%
+ 
+
 }
 
 /* .popup .overlay {
@@ -383,19 +458,151 @@ button {
 
 
 
+.bidHeader {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+.bids {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    width: 200px;
+    height: 48px;
+}
+
+.shoeinput {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 48px;
+}
+
+.newPriceinput {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 48px;
+}
+
+.newImginput {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 48px;
+}
+
+.bidInput{
+  min-width: 125px;
+  padding: 15px 10px;
+  margin: 20px;
+  background: rgb(214, 214, 214);
+  border: none;
+  border-radius: 25px;
+  color: rgb(63, 230, 48);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.952),
+    7px 7px 20px 0 rgb(212, 212, 212);
+}
+.bidInput:hover {
+  box-shadow: inset -7px -7px 20px 0 rgba(253, 251, 251, 0.911),
+    inset 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.exitbtn{
+  position: relative;
+  top: -30%;
+  min-width: 60px;
+  padding: 15px 10px;
+  margin: 20px;
+  background: rgb(214, 214, 214);
+  border: none;
+  border-radius: 40px;
+  color: rgb(155, 19, 19);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.952),
+    7px 7px 20px 0 rgb(212, 212, 212);
+}
+
+.buyprice {
+  font-family: 'Montserrat Alternates', sans-serif;
+  position: relative;
+  top: -90%;
+  left: 99%;
+}
+
+.buy {
+  position: relative;
+  top: -65%;
+  left: 96%;
+  min-width: 80px;
+  padding: 15px 10px;
+  margin: 20px;
+  background: rgb(214, 214, 214);
+  border: none;
+  border-radius: 45px;
+  color: rgba(46, 133, 92, 0.74);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.952),
+    7px 7px 20px 0 rgb(212, 212, 212);
+}
+
+.newForm {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.neForm {
+  font-family: 'Montserrat Alternates', sans-serif;
+  position: absolute ;
+  top: -1%;
+  left: 55%;
+}
+
+
+.newButton{
+  min-width: 125px;
+  padding: 15px 10px;
+  margin: 20px;
+  background: rgb(214, 214, 214);
+  border: none;
+  border-radius: 25px;
+  color: rgb(255, 166, 65);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.952),
+    7px 7px 20px 0 rgb(212, 212, 212);
+}
+.newButton:hover {
+  box-shadow: inset -7px -7px 20px 0 rgba(253, 251, 251, 0.911),
+    inset 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
 
 
 
 .price {
   font-family: 'Montserrat Alternates', sans-serif;
+  position: relative;
+  left: -12%;
 }
 
 /* ADIDAS */
 .sneak .show {
   display: flex;
   min-width: 110px;
-  height: 150px;
-  line-height: 110px; 
+  height: 50px;
+  line-height: 1.5; 
   /* flex-direction: column; */
   /* align-items: center; */
   /* text-align: center; */
@@ -409,7 +616,7 @@ button {
 .sneakj .show {
   display: flex;
   min-width: 110px;
-  height: 150px;
+  height: 80px;
   line-height: 110px; 
   /* flex-direction: column; */
   /* align-items: center; */
@@ -505,8 +712,6 @@ button {
    .nametitle{
      width: 100% ;
      height: 10% ;
-    padding-right: 100px; 
-    padding-left: 100px;
     top: 400px;
     right: 400px;
   } 
