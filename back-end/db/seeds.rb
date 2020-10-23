@@ -47020,14 +47020,21 @@ shoes = [
 
 # test_user = User.create(username: "test", password: "test")
 
+
 shoes.each do | shoe_hash |
+
+
+  brandname = shoe_hash[:name].split(" ")[0]
     sneaker = Sneaker.create(
+        brand: brandname,
         name: shoe_hash[:name],
         retail: shoe_hash[:retail],
         releaseDate: shoe_hash[:releaseDate],
-        image: shoe_hash[:image]
+        image: shoe_hash[:image],
+        likes: rand(23..555)
     )
-   
+
+    
 end
 
 

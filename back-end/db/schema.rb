@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_202758) do
   end
 
   create_table "sneakers", force: :cascade do |t|
+    t.string "brand"
     t.string "name"
     t.integer "retail"
     t.string "image"
