@@ -1,5 +1,6 @@
 console.log("HERE")
 
+// URLS
 const urlbase = "http://localhost:3000/api/v1/sneakers/"
 const urluser = "http://localhost:3000/api/v1/users/"
 const urllike = "http://localhost:3000/api/v1/sneaker"
@@ -9,27 +10,248 @@ const urlbid = "http://localhost:3000/api/v1/bids/"
 //SCROLL DIVS
 const scrolldiv = document.querySelector(".scroll")
 const sneakcontain = document.querySelector(".sneak")
-
 const scrollj = document.querySelector(".scrollj")
 const sneakj = document.querySelector(".sneakj")
-
 const scrolln = document.querySelector(".scrolln")
 const sneakn = document.querySelector(".sneakn")
-
 const scrollv = document.querySelector(".scrollv")
 const sneakv = document.querySelector(".sneakv")
 
 
 
 
-
+// MAIN CONTAINERS
 const container = document.querySelector(".main")
 const logdiv = document.querySelector(".login")
 const profilediv = document.querySelector(".profile")
 const sneakerDiv = document.querySelector(".sneakerDiv")
-const newpostDiv = document.createElement("div")
-newpostDiv.className = "newPostDiv"
+const newpostDiv = document.querySelector(".newPostDiv")
+console.log(newpostDiv)
 const ogDIv = document.querySelector('.ogDiv')
+
+
+
+
+
+
+ // NEW POST 
+ const newForm = document.createElement("form")
+ console.log(newForm)
+ newForm.className = "newForm"
+ newForm.innerText = "POST NEW SNEAKER"
+// SHOE NAME
+const shoeName = document.createElement("input")
+shoeName.type = "text"
+shoeName.className = "shoeinput"
+shoeName.name = "name"
+shoeName.placeholder = "name"
+// PRICE
+const newPrice = document.createElement("input")
+newPrice.type = "text"
+newPrice.className = "newPriceinput"
+newPrice.name = "price"
+newPrice.placeholder = "price"
+//IMAGE
+const newImg = document.createElement("input")
+newImg.type = "text"
+newImg.className = "newImginput"
+newImg.name = "image"
+newImg.placeholder = "image"
+//BUTTON
+const postSneaker = document.createElement("button")
+console.log(postSneaker)
+postSneaker.className = "newButton"
+postSneaker.innerText = "NEW POST"
+console.log(newpostDiv)
+// APPENDS
+newForm.append(shoeName,newPrice,newImg,postSneaker)
+newpostDiv.append(newForm)
+//ADD EVENT LISENTER
+newForm.addEventListener("submit", e => {
+    e.preventDefault()
+    console.log(e)
+
+    fetch(urlbase, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        }, 
+    body:JSON.stringify ({
+        name:  e.target[0].value,
+        retail: e.target[1].value, 
+        image: e.target[2].value,
+        likes: 0, 
+        releaseDate: "2020-10-25",
+        bids:[]
+        
+    })
+    
+    }).then(res => res.json()).then(newSneaker => 
+        {renderNew(newSneaker)
+    })
+})
+
+function renderNew(newSneaker) {
+// SNEAKER CONTAINERS
+
+const showdiv = document.createElement('div')
+showdiv.className = "show"
+
+// SNEAKER IMAGE
+const img = document.createElement("img")
+img.className = ("image")
+img.src = newSneaker.image
+
+
+// SNEAKER NAME
+const name = document.createElement("h2")
+name.className = "name"
+name.innerText = newSneaker.name
+
+const nametitle = document.createElement("div")
+nametitle.className = "nametitle"
+
+
+const hr = document.createElement("hr")
+
+// SNEAKER NAME 
+const namediv = document.createElement("div")
+namediv.className = "namediv"
+
+
+// /SNEAKER LIKES
+const likes = document.createElement("span")
+likes.className = "likes"
+likes.innerText = `${newSneaker.likes} likes`
+
+//LIKE BUTTON
+const likbtn = document.createElement("button")
+likbtn.className = "likebtn"
+likbtn.innerText = "like"
+likbtn.addEventListener('click' , e => {
+    //console.log("CLICK")
+    e.preventDefault()
+    let newlike = parseInt(likes.innerText) + 1
+
+
+    fetch(`http://localhost:3000/api/v1/sneakers/${newSneaker.id}`, {
+        method: "PATCH",
+        headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+        },
+        body: JSON.stringify ({
+            "likes": newlike
+        })
+    }).then(res => res.json()).then((sneaker) => likes.innerText = `${sneaker.likes} likes`)
+})
+
+
+//PRICE
+const price = document.createElement("h1")
+price.className = "price"
+price.innerText =  `$${newSneaker.retail}`
+
+//BID CONTAINER
+const bidDiv = document.createElement("div")
+bidDiv.className = "bidDiv"
+
+// BID TITLE
+const bidTitle = document.createElement("h1")
+bidTitle.className = "bidTitle"
+bidTitle.innerText = "Bids"
+
+// ALL BIDS
+if (newSneaker.bids = []) {
+    console.log("Active bids")
+} else {
+    newSneaker.bids.forEach( bid => {
+        const li = document.createElement("li")
+        li.className = "bids"
+        li.innerText = `${bid.bid}`
+
+        dltbit = document.createElement("button")
+        dltbit.className = "delete"
+        dltbit.innerText = "X"
+        li.append(dltbit)
+        bidDiv.append(li)
+
+        dltbit.addEventListener("click" , event => {
+
+            fetch(urlbid + bid.id ,{
+                method: "DELETE"
+            })
+            li.remove()
+
+            })
+    })
+
+}
+
+
+
+// BID HEADER
+const bidheader = document.createElement("h1")
+bidheader.className = "bidHeader"
+bidheader.innerText = "New Bid"
+
+//NEW BID FORM
+const Bidform = document.createElement("form")
+Bidform.className = "bidForm"
+
+const buyer = document.createElement("textarea")
+buyer.className = "bidderName"
+
+const bid = document.createElement("textfield")
+bid.className = "bids"
+
+const input = document.createElement("input")
+input.className = "bidInput"
+input.type = "submit"
+input.value = "Submit"
+
+
+
+
+
+
+Bidform.append(buyer,bid,input)
+bidDiv.append(Bidform)
+
+const br = document.createElement("br")
+const likDiv = document.createElement("div")
+    likDiv.className = "likDiv"
+    likDiv.append(likes,likbtn)
+//APPENDS
+nametitle.append(name)
+// showdiv.append()
+const sneakne = document.querySelector(".sneakne")
+const scrollne = document.querySelector(".scrollne")
+sneakne.append(img,price,nametitle,likDiv,bidDiv)
+scrollne.append(showdiv)
+
+    img.addEventListener('click', event=> {
+
+        
+            showPage = !showPage;
+
+            if (showPage) {
+                bidDiv.style.display = "block"
+            }
+            else {
+                bidDiv.style.display = "none"
+            }
+        
+    })
+
+
+}
+
+
+
+
+
 
 
 let showPage = false;
@@ -125,7 +347,6 @@ let showPage = false;
     const aName = document.querySelector(".AName")
     const branda = document.createElement("h1")
     branda.className = "brand"
-    branda.innerText = sneaker.brand
     aName.append(branda)
     function renderAddias(sneaker) {
     const showdiv = document.createElement('div')
@@ -226,7 +447,7 @@ let showPage = false;
     //LIKE BUTTON
     const likbtn = document.createElement("button")
     likbtn.className = "likebtn"
-    likbtn.innerText = "like"
+    likbtn.innerText = "LIKE"
     likbtn.addEventListener('click' , e => {
     //console.log("CLICK")
     e.preventDefault()
@@ -445,7 +666,7 @@ let showPage = false;
     //LIKE BUTTON
     const likbtn = document.createElement("button")
     likbtn.className = "likebtn"
-    likbtn.innerText = "like"
+    likbtn.innerText = "LIKE"
     likbtn.addEventListener('click' , e => {
     //console.log("CLICK")
     e.preventDefault()
@@ -662,7 +883,7 @@ nName.append(brandn)
     //LIKE BUTTON
     const likbtn = document.createElement("button")
     likbtn.className = "likebtn"
-    likbtn.innerText = "like"
+    likbtn.innerText = "LIKE"
     likbtn.addEventListener('click' , e => {
         //console.log("CLICK")
         e.preventDefault()
@@ -881,7 +1102,7 @@ vName.append(brandv)
         //LIKE BUTTON
         const likbtn = document.createElement("button")
         likbtn.className = "likebtn"
-        likbtn.innerText = "like"
+        likbtn.innerText = "LIKE"
         likbtn.addEventListener('click' , e => {
             //console.log("CLICK")
             e.preventDefault()
@@ -989,6 +1210,7 @@ vName.append(brandv)
         })
         
         sneakv.append(img,price,nametitle,likDiv,bidDiv)
+        showdiv.append
         scrollv.append(showdiv)
         }
 
@@ -1072,221 +1294,11 @@ vName.append(brandv)
 
 
 
- // NEW POST 
-
- const newForm = document.createElement("form")
- newForm.className = "newForm"
- newForm.innerText = "POST NEW SNEAKER"
-
-
-const shoeName = document.createElement("input")
-shoeName.type = "text"
-shoeName.className = "shoeinput"
-shoeName.name = "name"
-shoeName.placeholder = "name"
-
-
-const newPrice = document.createElement("input")
-newPrice.type = "text"
-newPrice.className = "newPriceinput"
-newPrice.name = "price"
-newPrice.placeholder = "price"
-
-const newImg = document.createElement("input")
-newImg.type = "text"
-newImg.className = "newImginput"
-newImg.name = "image"
-newImg.placeholder = "image"
-
-
-const postSneaker = document.createElement("button")
-postSneaker.className = "newButton"
-postSneaker.innerText = "NEW POST"
-
-newForm.append(shoeName,newPrice,newImg,postSneaker)
-newpostDiv.append(newForm)
-// profilediv.append(newpostDiv)
-
-ogDIv.append(newpostDiv)
-
-    newForm.addEventListener("submit", e => {
-        e.preventDefault()
-        console.log(e)
-
-        fetch(urlbase, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-                "Accept": "application/json"
-            }, 
-        body:JSON.stringify ({
-            name:  e.target[0].value,
-            retail: e.target[1].value, 
-            image: e.target[2].value,
-            likes: 0, 
-            releaseDate: "2020-10-25",
-            bids:[]
-            
-        })
-        
-        }).then(res => res.json()).then(newSneaker => 
-            {renderNew(newSneaker)
-        })
-    })
-
-    function renderNew(newSneaker) {
- // SNEAKER CONTAINERS
-
-    const showdiv = document.createElement('div')
-    showdiv.className = "show"
-
-    // SNEAKER IMAGE
-    const img = document.createElement("img")
-    img.className = ("image")
-    img.src = newSneaker.image
-
-
-    // SNEAKER NAME
-    const name = document.createElement("h2")
-    name.className = "name"
-    name.innerText = newSneaker.name
-
-    const nametitle = document.createElement("div")
-    nametitle.className = "nametitle"
-
-
-    const hr = document.createElement("hr")
-
-    // SNEAKER NAME 
-    const namediv = document.createElement("div")
-    namediv.className = "namediv"
-
-
-    // /SNEAKER LIKES
-    const likes = document.createElement("span")
-    likes.className = "likes"
-    likes.innerText = `${newSneaker.likes} likes`
-
-    //LIKE BUTTON
-    const likbtn = document.createElement("button")
-    likbtn.className = "likebtn"
-    likbtn.innerText = "like"
-    likbtn.addEventListener('click' , e => {
-        //console.log("CLICK")
-        e.preventDefault()
-        let newlike = parseInt(likes.innerText) + 1
-
-
-        fetch(`http://localhost:3000/api/v1/sneakers/${sneaker.id}`, {
-            method: "PATCH",
-            headers: {
-            "Content-type": "application/json",
-            "Accept": "application/json"
-            },
-            body: JSON.stringify ({
-                "likes": newlike
-            })
-        }).then(res => res.json()).then((sneaker) => likes.innerText = `${sneaker.likes} likes`)
-    })
-
-
-    //PRICE
-    const price = document.createElement("h1")
-    price.className = "price"
-    price.innerText =  `$${newSneaker.retail}`
-
-    //BID CONTAINER
-    const bidDiv = document.createElement("div")
-    bidDiv.className = "bidDiv"
-
-    // BID TITLE
-    const bidTitle = document.createElement("h1")
-    bidTitle.className = "bidTitle"
-    bidTitle.innerText = "Bids"
-
-    // ALL BIDS
-    if (newSneaker.bids = []) {
-        console.log("Active bids")
-    } else {
-        newSneaker.bids.forEach( bid => {
-            const li = document.createElement("li")
-            li.className = "bids"
-            li.innerText = `${bid.bid}`
-    
-            dltbit = document.createElement("button")
-            dltbit.className = "delete"
-            dltbit.innerText = "X"
-            li.append(dltbit)
-            bidDiv.append(li)
-    
-            dltbit.addEventListener("click" , event => {
-    
-                fetch(urlbid + bid.id ,{
-                    method: "DELETE"
-                })
-                li.remove()
-    
-                })
-        })
-
-    }
-
-
-
-    // BID HEADER
-    const bidheader = document.createElement("h1")
-    bidheader.className = "bidHeader"
-    bidheader.innerText = "New Bid"
-
-    //NEW BID FORM
-    const Bidform = document.createElement("form")
-    Bidform.className = "bidForm"
-
-    const buyer = document.createElement("textarea")
-    buyer.className = "bidderName"
-
-    const bid = document.createElement("textfield")
-    bid.className = "bids"
-
-    const input = document.createElement("input")
-    input.className = "bidInput"
-    input.type = "submit"
-    input.value = "Submit"
 
 
 
 
 
-
-    Bidform.append(buyer,bid,input)
-    bidDiv.append(Bidform)
-
-    const br = document.createElement("br")
-    const likDiv = document.createElement("div")
-        likDiv.className = "likDiv"
-        likDiv.append(likes,likbtn)
-    //APPENDS
-    nametitle.append(name)
-    // showdiv.append()
-    sneakne.append(img,price,nametitle,likDiv,bidDiv)
-    scrollne.append(showdiv)
-
-        img.addEventListener('click', event=> {
-
-            
-                showPage = !showPage;
-
-                if (showPage) {
-                    bidDiv.style.display = "block"
-                }
-                else {
-                    bidDiv.style.display = "none"
-                }
-            
-        })
-
-
- }
 
 
 
